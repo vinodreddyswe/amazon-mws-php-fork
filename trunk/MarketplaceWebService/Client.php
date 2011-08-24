@@ -14,9 +14,11 @@
  *  Marketplace Web Service PHP5 Library
  *  Generated: Thu May 07 13:07:36 PDT 2009
  *
+ *  Modified $Id$
  */
 
 /**
+ *  @todo remove includes in favour of autoloading
  *  @see MarketplaceWebService_Interface
  */
 require_once ('MarketplaceWebService/Interface.php');
@@ -30,8 +32,15 @@ define('CONVERTED_HEADERS_KEY', 'HEADERS');
  *
  * MarketplaceWebService_Client is an implementation of MarketplaceWebService
  *
+ * @todo improve backslash escapes by not using preg for single-char replacements
+ * @todo get rid of static includes
+ * @todo wrap request into single __call() statement
+ * @todo use marketplace id list
+ * @todo determine purpose of convert* and try to simplify redundancy with
+ * request classes.
  */
-class MarketplaceWebService_Client implements MarketplaceWebService_Interface
+class MarketplaceWebService_Client
+implements MarketplaceWebService_Interface
 {
 
   /** @var string */
@@ -55,6 +64,8 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
   const REQUEST_TYPE = "POST";
 
   const MWS_CLIENT_VERSION = '2011-08-01';
+  
+  const MWS_FORK_VERSION = '2011-08-24';
   
   private $defaultHeaders = array();
 
@@ -89,7 +100,8 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   public function __construct(
   $awsAccessKeyId, $awsSecretAccessKey, $config, $applicationName, $applicationVersion, $attributes = null) {
-	iconv_set_encoding('output_encoding', 'UTF-8');
+    // TODO do not rewrite global iconv charsets by default!
+    iconv_set_encoding('output_encoding', 'UTF-8');
     iconv_set_encoding('input_encoding', 'UTF-8');
     iconv_set_encoding('internal_encoding', 'UTF-8');
 
@@ -115,7 +127,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
       $applicationVersion,
       $attributes = null) {
 
-    if (is_null($attributes)) {
+    if ( null === $attributes ) {
       $attributes = array ();
     }
 
@@ -176,6 +188,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
 
   /**
    * Collapse multiple whitespace characters into a single ' ' character.
+   * @todo add unicode support (mind unicode bug in some preg versions)
    * @param $s
    * @return string
    */
@@ -877,6 +890,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
     $this->curlClient = curl_init();
     curl_setopt_array($this->curlClient, $curlOptions);
 
+    // TODO is @ useful to access memory stream?
     $this->headerContents = @fopen('php://memory', 'rw+');
     $this->errorResponseBody = @fopen('php://memory', 'rw+');
 
@@ -992,6 +1006,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
   
   /**
    * Gets cURL options common to all MWS requests.
+   * @todo make curl options editable
    * @return unknown_type
    */
   private function getDefaultCurlOptions() {
@@ -1007,7 +1022,8 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
   
   /**
    * Configures specific curl options based on the request type.
-   *
+   * @todo check if this can be simplified
+   * 
    * @param $action
    * @param $parameters
    * @param $streamHandle
@@ -1104,6 +1120,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
 
   /**
    * Exponential sleep on failed request
+   * @todo make editable
    * @param retries current retry
    */
   private function pauseOnRetry($retries)
@@ -1169,6 +1186,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
     $signatureVersion = $parameters['SignatureVersion'];
     $algorithm = "HmacSHA1";
     $stringToSign = null;
+    // TODO use switch statement
     if (0 === $signatureVersion) {
       throw new InvalidArguementException(
         'Signature Version 0 is no longer supported. Only Signature Version 2 is supported.');
@@ -1226,6 +1244,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    */
   private function sign($data, $key, $algorithm)
   {
+      // TODO use switch
     if ($algorithm === 'HmacSHA1') {
       $hash = 'sha1';
     } else if ($algorithm === 'HmacSHA256') {
@@ -1242,6 +1261,7 @@ class MarketplaceWebService_Client implements MarketplaceWebService_Interface
    * Returns a ISO 8601 formatted string from a DateTime instance.
    */
   private function getFormattedTimestamp($dateTime) {
+      // TODO use config to determine date format
     return $dateTime->format(DATE_ISO8601);
   }
 

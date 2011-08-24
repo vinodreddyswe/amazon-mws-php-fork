@@ -14,12 +14,13 @@
  *  Marketplace Web Service PHP5 Library
  *  Generated: Thu May 07 13:07:36 PDT 2009
  *  
- *  Modified: $id:$
+ *  Modified: $Id$
  * 
  */
 
 /**
  * MarketplaceWebService_Model - base class for all model classes
+ * @todo improve getter and setter (key validation) and add magic with*, get* and set*
  */ 
 abstract class MarketplaceWebService_Model
 {

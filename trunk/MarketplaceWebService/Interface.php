@@ -13,13 +13,12 @@
 
  *  Marketplace Web Service PHP5 Library
  *  Generated: Thu May 07 13:07:36 PDT 2009
- * 
+ *  Modified: $Id$
  */
 /**
  * The Amazon Marketplace Web Service contain APIs for inventory and order management.
- * 
+ * @todo no particular use found. re-evaluate. 
  */
-
 interface  MarketplaceWebService_Interface 
 {
     
