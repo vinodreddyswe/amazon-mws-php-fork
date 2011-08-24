@@ -1,5 +1,4 @@
 2011-08-24:
     - using php-2011-08-01._V157090117_ as base
     - added readme
-    - sanitised client.php
-    - sanitised model.php
+    - added todo for client.php and model.php
