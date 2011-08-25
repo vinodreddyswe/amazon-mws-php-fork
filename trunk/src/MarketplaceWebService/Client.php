@@ -116,10 +116,8 @@ implements MarketplaceWebService_Interface
      * @param $attributes
      * @return unknown_type
      */
-    public function setUserAgentHeader(
-    $applicationName,
-    $applicationVersion,
-    $attributes = null) {
+    public function setUserAgentHeader($applicationName, $applicationVersion, $attributes = null)
+    {
 
         if ( null === $attributes ) {
             $attributes = array ();
@@ -127,6 +125,8 @@ implements MarketplaceWebService_Interface
 
         $this->config['UserAgent'] =
         $this->constructUserAgentHeader($applicationName, $applicationVersion, $attributes);
+        
+        return $this;
     }
 
     /**
@@ -142,7 +142,8 @@ implements MarketplaceWebService_Interface
      * @param $additionalNameValuePairs
      * @return unknown_type
      */
-    private function constructUserAgentHeader($applicationName, $applicationVersion, $attributes = null) {
+    public function constructUserAgentHeader($applicationName, $applicationVersion, $attributes = null)
+    {
 
         if (null === $applicationName || $applicationName === "") {
             throw new InvalidArguementException('$applicationName cannot be null.');
@@ -186,7 +187,9 @@ implements MarketplaceWebService_Interface
      * @param $s
      * @return string
      */
-    private function collapseWhitespace($s) {
+    public function collapseWhitespace($s)
+    {
+        // TODO not unicode safe. But mind the utf bug for older pcre version.
         return preg_replace('/ {2,}|\s/', ' ', $s);
     }
 
@@ -196,8 +199,10 @@ implements MarketplaceWebService_Interface
      * @param $s
      * @return string
      */
-    private function quoteApplicationName($s) {
+    private function quoteApplicationName($s)
+    {
         $quotedString = $this->collapseWhitespace($s);
+        // TODO use str_replace
         $quotedString = preg_replace('/\\\\/', '\\\\\\\\', $quotedString);
         $quotedString = preg_replace('/\//', '\\/', $quotedString);
 
@@ -287,6 +292,8 @@ implements MarketplaceWebService_Interface
         $responseClassname = $callsname . 'Response';
         // replacement for service access points
         if (class_exists($requestClassname)) {
+            // TODO check argument count
+            $request = array_shift($args);
             if (!$request instanceof $requestClassname) {
                 $request = new $requestClassname($request);
             }
@@ -451,26 +458,6 @@ implements MarketplaceWebService_Interface
             $request = new MarketplaceWebService_Model_CancelFeedSubmissionsRequest($request);
         }
         return MarketplaceWebService_Model_CancelFeedSubmissionsResponse::fromXML($this->invoke($this->convertCancelFeedSubmissions($request)));
-    }
-
-    /**
-     * Request Report
-     * requests the generation of a report
-     *
-     * @see http://docs.amazonwebservices.com/${docPath}RequestReport.html
-     * @param mixed $request array of parameters for MarketplaceWebService_Model_RequestReportRequest request
-     * or MarketplaceWebService_Model_RequestReportRequest object itself
-     * @see MarketplaceWebService_Model_RequestReport
-     * @return MarketplaceWebService_Model_RequestReportResponse MarketplaceWebService_Model_RequestReportResponse
-     *
-     * @throws MarketplaceWebService_Exception
-     */
-    public function requestReport($request)
-    {
-        if (!$request instanceof MarketplaceWebService_Model_RequestReportRequest) {
-            $request = new MarketplaceWebService_Model_RequestReportRequest($request);
-        }
-        return MarketplaceWebService_Model_RequestReportResponse::fromXML($this->invoke($this->convertRequestReport($request)));
     }
 
     /**

@@ -2,22 +2,35 @@
 
 /**
  * 
- * @todo replace setters/ getters
- * @todo with* is easily wrapped by __call
- * @todo provide default __get and __set logic
- * @todo allow child classes to merge in fields
  */
 abstract class MarketplaceWebService_ModelRequest
 extends MarketplaceWebService_Model
 {
-    public function convert(array $params = array()) {
-        // TODO refactor to apply to any given property
-        // TODO refactor to use marketplace id list
-        if ($this->isSetMarketplace()) {
-            $parameters['Marketplace'] =  $this->getMarketplace();
-        }
-        if ($this->isSetMerchant()) {
-            $parameters['Merchant'] =  $this->getMerchant();
+    public function __construct($data = null)
+    {
+        $this->fields['Marketplace'] = array('FieldValue' => null, 'FieldType' => 'string');
+        $this->fields['Merchant'] = array('FieldValue' => null, 'FieldType' => 'string');
+        // TODO might not be available for all request classes
+        $this->fields['MarketplaceIdList'] = array('FieldValue' => null, 'FieldType' => 'MarketplaceWebService_Model_IdList');
+        parent::__construct($data);
+    }
+    
+    /**
+     * Convert object to array.
+     * 
+     * Added to move logic from Client to request classes.
+     * 
+     * @param array $params
+     * 
+     * @return array
+     */
+    public function convert(array $params = array())
+    {
+        // add any set property from fields
+        foreach ($this->fields as $key => $v) {
+            if ( $this->__isset($key) ) {
+                $params[$key] = $this->__get($key);
+            }
         }
         return $params;
     }
@@ -30,5 +43,21 @@ extends MarketplaceWebService_Model
     public function getContentMd5()
     {
         return null;
+    }
+
+    /**
+     * Sets the value of the MarketplaceIdList.
+     * 
+     * @param IdList MarketplaceIdList
+     * @return void
+     */
+    public function setMarketplaceIdList($value) 
+    {
+        $marketplaceIdList = new MarketplaceWebService_Model_IdList();
+        $marketplaceIdList->setId($value['Id']);
+        if ( array_key_exists('MarketplaceIdList', $this->fields) ) {
+            $this->fields['MarketplaceIdList']['FieldValue'] = $marketplaceIdList;
+        }
+        return;
     }
 }
