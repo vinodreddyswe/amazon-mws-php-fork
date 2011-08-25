@@ -59,14 +59,23 @@ abstract class MarketplaceWebService_Model
      *
      *   $action->getProperty()
      *
-     * @param string $propertyName name of the property
-     */
-    public function __get($propertyName)
+     * @param string $key name of the property
+     * @return mixed
+     */        
+    public function __get($key)
     {
-        $getter = "get$propertyName";
-        return $this->$getter();
+        $getter = 'get'.ucfirst($key);
+        if (method_exists($this, $getter)) {
+            return $this->$getter();
+        }
+        
+        if (!array_key_exists($key, $this->fields)) {
+            throw new InvalidArgumentException("No such property $key.");
+        }
+        
+        return $this->fields[$key]['FieldValue'];
     }
-
+    
     /**
      * Support for virtual properties setters.
      *
@@ -78,16 +87,80 @@ abstract class MarketplaceWebService_Model
      *
      *   $action->setProperty('ABC')
      *
-     * @param string $propertyName name of the property
+     * @param string $key name of the property
+     * @param mixed $value value of the property
+     * 
+     * @return MarketplaceWebService_Model instance of this object.
      */
-    public function __set($propertyName, $propertyValue)
+    public function __set($key, $value)
     {
-        $setter = "set$propertyName";
-        $this->$setter($propertyValue);
+        $setter = 'set'.ucfirst($key);
+        if (method_exists($this, $setter)) {
+            return $this->$setter($value);
+        }
+        
+        if (!array_key_exists($key, $this->fields)) {
+            throw new InvalidArgumentException("No such property $key.");
+        }
+        
+        $this->fields[$key]['FieldValue'] = $value;
+        
         return $this;
     }
+    
+    /**
+     * 
+     * @param $key
+     */
+    public function __isset($key)
+    {
+        $isset = 'isSet'.ucfirst($key);
+        if (method_exists($this, $isset)) {
+            return $this->$isset();
+        }
+           
+        return isset($this->fields[$key]);
+    }
+    
+    /**
+     * Mapping get*, set*, with* and isSet* methods
+     * with generic logic to corresponding magic method.
+     * 
+     * @param $method
+     * @param $args
+     */
+    public function __call($method, $args)
+    {
+        // TODO improve using preg_split and switch
+        // wrap with*($value) calls
+        if (strpos($method, 'with') === 0) {
+            $key = substr($method, 4);
+            $value = array_shift($args);
+            $this->__set($key, $value);
+            
+            return $this;
+        }
+        // wrap set*($value) calls
+        if (strpos($method, 'set') === 0) {
+            $key = substr($method, 3);
+            $value = array_shift($args);
+            return $this->__set($key, $value);
+        }
+        // wrap get*() calls
+        if (strpos($method, 'get') === 0) {
+            $key = substr($method, 3);
+            return $this->__get($key);
+        }
+        // wrap isSet*() calls
+        if (strpos($method, 'isSet') === 0) {
+            $key = substr($method, 5);
+            return $this->__isset($key);
+        }
+        
+        throw new BadMethodCallException("No such method $method.");
+    }
+    
 
-     
     /**
      * XML fragment representation of this object
      * Note, name of the root determined by caller

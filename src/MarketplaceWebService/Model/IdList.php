@@ -13,15 +13,9 @@
 
  *  Marketplace Web Service PHP5 Library
  *  Generated: Thu May 07 13:07:36 PDT 2009
- * 
+ *  
+ *  Modified: $Id$
  */
-
-/**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
 
 /**
  * MarketplaceWebService_Model_IdList
@@ -33,7 +27,8 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_IdList extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_IdList
+extends MarketplaceWebService_Model
 {
 
 
@@ -57,32 +52,6 @@ class MarketplaceWebService_Model_IdList extends MarketplaceWebService_Model
         parent::__construct($data);
     }
 
-        /**
-     * Gets the value of the Id .
-     * 
-     * @return array of string Id
-     */
-    public function getId() 
-    {
-        return $this->fields['Id']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the Id.
-     * 
-     * @param string or an array of string Id
-     * @return this instance
-     */
-    public function setId($id) 
-    {
-        if (!$this->isNumericArray($id)) {
-            $id =  array ($id);    
-        }
-        $this->fields['Id']['FieldValue'] = $id;
-        return $this;
-    }
-  
-
     /**
      * Sets single or multiple values of Id list via variable number of arguments. 
      * For example, to set the list with two elements, simply pass two values as arguments to this function
@@ -99,7 +68,6 @@ class MarketplaceWebService_Model_IdList extends MarketplaceWebService_Model
         return $this;
     }  
       
-
     /**
      * Checks if Id list is non-empty
      * 
@@ -109,8 +77,4 @@ class MarketplaceWebService_Model_IdList extends MarketplaceWebService_Model
     {
         return count ($this->fields['Id']['FieldValue']) > 0;
     }
-
-
-
-
 }
