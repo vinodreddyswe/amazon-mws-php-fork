@@ -4,6 +4,8 @@
     - wrapped service access methods in __call() for Client
     - added abstract ModelRequest class for Model_*Request classes
     - added Client::convert() as default request object to array mapping
+    
+    - added MarketplaceWebServiceOrders
 
 2011-08-24:
     - using php-2011-08-01._V157090117_ as base

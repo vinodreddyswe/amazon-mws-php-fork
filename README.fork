@@ -1,4 +1,31 @@
 This is a development version. Do not use in production.
 
+Samples and Mock might not work with trunk.
 
-Samples and Mock might not work.
+-------
+
+Requirements:
+
+- PHP 5.2.8 + (tested for 5.3.2+)
+- cURL 7.18.0 +
+
+Note that the original library will reset iconv to use UTF-8 encoding.
+
+Use of memory or temp streams will effect performance and may even
+break the given memory limit. 
+
+-------
+
+Aim:
+
+Provide a unified and maintainable library.
+
+Goals:
+
+- reduce code redundancy to get maintainability on a useful level
+- abstract request and response model classes
+- remove any coded includes (require_once calls)
+- abstract client and model class to a single base for all libraries
+- fix bugs
+- apply some coding convention and cleanup code
+- improve performance/ coding standard
