@@ -1,3 +1,10 @@
+2011-08-25:
+    - removed require_once statements from Client and Model class files.
+    - simplified Model class logic (removed redundant code)
+    - wrapped service access methods in __call() for Client
+    - added abstract ModelRequest class for Model_*Request classes
+    - added Client::convert() as default request object to array mapping
+
 2011-08-24:
     - using php-2011-08-01._V157090117_ as base
     - added readme
