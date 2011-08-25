@@ -870,7 +870,7 @@ implements MarketplaceWebService_Interface
    * @param $contentMd5 - The Content-MD5 HTTP header value used for feed submissions.
    * @return array
    */
-  private function performRequest($action, array $converted, $dataHandle = null, $contentMd5 = null) {
+  protected function performRequest($action, array $converted, $dataHandle = null, $contentMd5 = null) {
 
     $curlOptions = $this->configureCurlOptions($action, $converted, $dataHandle, $contentMd5);
 
