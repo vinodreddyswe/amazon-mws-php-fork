@@ -289,10 +289,9 @@ implements MarketplaceWebService_Interface
         // TODO make namespace a property; maybe even allow multiple namespaces
         $classname = 'MarketplaceWebService_Model_'.ucfirst($method);
         $requestClassname = $classname . 'Request';
-        $responseClassname = $callsname . 'Response';
         // replacement for service access points
         if (class_exists($requestClassname)) {
-            // TODO check argument count
+            // TODO check function argument count
             $request = array_shift($args);
             if (!$request instanceof $requestClassname) {
                 $request = new $requestClassname($request);
@@ -304,7 +303,9 @@ implements MarketplaceWebService_Interface
             $contentMd5 = $request->getContentMd5();
             $xml = $this->invoke($converted, $dataHandle, $contentMd5);
 
-            $response = $responseClassname::fromXML($xml);
+            // using factory
+            $ns = ucfirst($method).'Response';
+            $response = MarketplaceWebService_ModelResponse::fromXML($xml, $ns);
             return $response;
         }
 

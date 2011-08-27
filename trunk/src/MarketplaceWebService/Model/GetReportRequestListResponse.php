@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetReportRequestListResponse
  * 
  * Properties:
@@ -34,10 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportRequestListResponse extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetReportRequestListResponse
+extends MarketplaceWebService_ModelResponse
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetReportRequestListResponse
      * 
@@ -67,128 +59,8 @@ class MarketplaceWebService_Model_GetReportRequestListResponse extends Marketpla
      * @param string $xml XML string to construct from
      * @return MarketplaceWebService_Model_GetReportRequestListResponse 
      */
-    public static function fromXML($xml)
+    public static function fromXML($xml, $ns)
     {
-        $dom = new DOMDocument();
-        $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
-    	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
-        $response = $xpath->query('//a:GetReportRequestListResponse');
-        if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetReportRequestListResponse(($response->item(0))); 
-        } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetReportRequestListResponse from provided XML. 
-                                  Make sure that GetReportRequestListResponse is a root element");
-        }
-          
+        return parent::fromXML($xml, 'GetReportRequestListResponse');
     }
-    
-    /**
-     * Gets the value of the GetReportRequestListResult.
-     * 
-     * @return GetReportRequestListResult GetReportRequestListResult
-     */
-    public function getGetReportRequestListResult() 
-    {
-        return $this->fields['GetReportRequestListResult']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the GetReportRequestListResult.
-     * 
-     * @param GetReportRequestListResult GetReportRequestListResult
-     * @return void
-     */
-    public function setGetReportRequestListResult($value) 
-    {
-        $this->fields['GetReportRequestListResult']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the GetReportRequestListResult  and returns this instance
-     * 
-     * @param GetReportRequestListResult $value GetReportRequestListResult
-     * @return MarketplaceWebService_Model_GetReportRequestListResponse instance
-     */
-    public function withGetReportRequestListResult($value)
-    {
-        $this->setGetReportRequestListResult($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if GetReportRequestListResult  is set
-     * 
-     * @return bool true if GetReportRequestListResult property is set
-     */
-    public function isSetGetReportRequestListResult()
-    {
-        return !is_null($this->fields['GetReportRequestListResult']['FieldValue']);
-
-    }
-
-    /**
-     * Gets the value of the ResponseMetadata.
-     * 
-     * @return ResponseMetadata ResponseMetadata
-     */
-    public function getResponseMetadata() 
-    {
-        return $this->fields['ResponseMetadata']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata.
-     * 
-     * @param ResponseMetadata ResponseMetadata
-     * @return void
-     */
-    public function setResponseMetadata($value) 
-    {
-        $this->fields['ResponseMetadata']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata  and returns this instance
-     * 
-     * @param ResponseMetadata $value ResponseMetadata
-     * @return MarketplaceWebService_Model_GetReportRequestListResponse instance
-     */
-    public function withResponseMetadata($value)
-    {
-        $this->setResponseMetadata($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ResponseMetadata  is set
-     * 
-     * @return bool true if ResponseMetadata property is set
-     */
-    public function isSetResponseMetadata()
-    {
-        return !is_null($this->fields['ResponseMetadata']['FieldValue']);
-
-    }
-
-
-
-    /**
-     * XML Representation for this object
-     * 
-     * @return string XML for this object
-     */
-    public function toXML() 
-    {
-        $xml = "";
-        $xml .= "<GetReportRequestListResponse xmlns=\"http://mws.amazonaws.com/doc/2009-01-01/\">";
-        $xml .= $this->_toXMLFragment();
-        $xml .= "</GetReportRequestListResponse>";
-        return $xml;
-    }
-
 }

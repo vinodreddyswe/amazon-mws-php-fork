@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_ManageReportScheduleResult
  * 
  * Properties:
@@ -34,10 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_ManageReportScheduleResult extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_ManageReportScheduleResult
+extends MarketplaceWebService_Model
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_ManageReportScheduleResult
      * 
@@ -59,62 +51,6 @@ class MarketplaceWebService_Model_ManageReportScheduleResult extends Marketplace
         );
         parent::__construct($data);
     }
-
-        /**
-     * Gets the value of the Count property.
-     * 
-     * @return int Count
-     */
-    public function getCount() 
-    {
-        return $this->fields['Count']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the Count property.
-     * 
-     * @param int Count
-     * @return this instance
-     */
-    public function setCount($value) 
-    {
-        $this->fields['Count']['FieldValue'] = $value;
-        return $this;
-    }
-
-    /**
-     * Sets the value of the Count and returns this instance
-     * 
-     * @param int $value Count
-     * @return MarketplaceWebService_Model_ManageReportScheduleResult instance
-     */
-    public function withCount($value)
-    {
-        $this->setCount($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if Count is set
-     * 
-     * @return bool true if Count  is set
-     */
-    public function isSetCount()
-    {
-        return !is_null($this->fields['Count']['FieldValue']);
-    }
-
-    /**
-     * Gets the value of the ReportSchedule.
-     * 
-     * @return array of ReportSchedule ReportSchedule
-     */
-    public function getReportScheduleList() 
-    {
-        return $this->fields['ReportSchedule']['FieldValue'];
-    }
-
     /**
      * Sets the value of the ReportSchedule.
      * 
@@ -129,7 +65,6 @@ class MarketplaceWebService_Model_ManageReportScheduleResult extends Marketplace
         $this->fields['ReportSchedule']['FieldValue'] = $reportSchedule;
         return $this;
     }
-
 
     /**
      * Sets single or multiple values of ReportSchedule list via variable number of arguments. 
@@ -146,20 +81,4 @@ class MarketplaceWebService_Model_ManageReportScheduleResult extends Marketplace
         }
         return $this;
     }   
-
-
-
-    /**
-     * Checks if ReportSchedule list is non-empty
-     * 
-     * @return bool true if ReportSchedule list is non-empty
-     */
-    public function isSetReportSchedule()
-    {
-        return count ($this->fields['ReportSchedule']['FieldValue']) > 0;
-    }
-
-
-
-
 }

@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_UpdateReportAcknowledgementsResult
  * 
  * Properties:
@@ -34,9 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_UpdateReportAcknowledgementsResult extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_UpdateReportAcknowledgementsResult
+extends MarketplaceWebService_Model
 {
-
 
     /**
      * Construct new MarketplaceWebService_Model_UpdateReportAcknowledgementsResult
@@ -60,61 +53,6 @@ class MarketplaceWebService_Model_UpdateReportAcknowledgementsResult extends Mar
         parent::__construct($data);
     }
 
-        /**
-     * Gets the value of the Count property.
-     * 
-     * @return int Count
-     */
-    public function getCount() 
-    {
-        return $this->fields['Count']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the Count property.
-     * 
-     * @param int Count
-     * @return this instance
-     */
-    public function setCount($value) 
-    {
-        $this->fields['Count']['FieldValue'] = $value;
-        return $this;
-    }
-
-    /**
-     * Sets the value of the Count and returns this instance
-     * 
-     * @param int $value Count
-     * @return MarketplaceWebService_Model_UpdateReportAcknowledgementsResult instance
-     */
-    public function withCount($value)
-    {
-        $this->setCount($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if Count is set
-     * 
-     * @return bool true if Count  is set
-     */
-    public function isSetCount()
-    {
-        return !is_null($this->fields['Count']['FieldValue']);
-    }
-
-    /**
-     * Gets the value of the ReportInfo.
-     * 
-     * @return array of ReportInfo ReportInfo
-     */
-    public function getReportInfoList() 
-    {
-        return $this->fields['ReportInfo']['FieldValue'];
-    }
-
     /**
      * Sets the value of the ReportInfo.
      * 
@@ -129,7 +67,6 @@ class MarketplaceWebService_Model_UpdateReportAcknowledgementsResult extends Mar
         $this->fields['ReportInfo']['FieldValue'] = $reportInfo;
         return $this;
     }
-
 
     /**
      * Sets single or multiple values of ReportInfo list via variable number of arguments. 
@@ -146,20 +83,4 @@ class MarketplaceWebService_Model_UpdateReportAcknowledgementsResult extends Mar
         }
         return $this;
     }   
-
-
-
-    /**
-     * Checks if ReportInfo list is non-empty
-     * 
-     * @return bool true if ReportInfo list is non-empty
-     */
-    public function isSetReportInfo()
-    {
-        return count ($this->fields['ReportInfo']['FieldValue']) > 0;
-    }
-
-
-
-
 }

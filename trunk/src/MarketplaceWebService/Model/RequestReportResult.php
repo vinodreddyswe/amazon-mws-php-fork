@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_RequestReportResult
  * 
  * Properties:
@@ -33,10 +26,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_RequestReportResult extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_RequestReportResult
+extends MarketplaceWebService_Model
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_RequestReportResult
      * 
@@ -56,54 +48,4 @@ class MarketplaceWebService_Model_RequestReportResult extends MarketplaceWebServ
         );
         parent::__construct($data);
     }
-
-        /**
-     * Gets the value of the ReportRequestInfo.
-     * 
-     * @return ReportRequestInfo ReportRequestInfo
-     */
-    public function getReportRequestInfo() 
-    {
-        return $this->fields['ReportRequestInfo']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ReportRequestInfo.
-     * 
-     * @param ReportRequestInfo ReportRequestInfo
-     * @return void
-     */
-    public function setReportRequestInfo($value) 
-    {
-        $this->fields['ReportRequestInfo']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ReportRequestInfo  and returns this instance
-     * 
-     * @param ReportRequestInfo $value ReportRequestInfo
-     * @return MarketplaceWebService_Model_RequestReportResult instance
-     */
-    public function withReportRequestInfo($value)
-    {
-        $this->setReportRequestInfo($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ReportRequestInfo  is set
-     * 
-     * @return bool true if ReportRequestInfo property is set
-     */
-    public function isSetReportRequestInfo()
-    {
-        return !is_null($this->fields['ReportRequestInfo']['FieldValue']);
-
-    }
-
-
-
-
 }

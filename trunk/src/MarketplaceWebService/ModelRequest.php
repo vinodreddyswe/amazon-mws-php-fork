@@ -42,7 +42,7 @@ extends MarketplaceWebService_Model
     
     public function getContentMd5()
     {
-        return null;
+        return $this->__isset('ContentMd5')?$this->__get('ContentMd5'):null;
     }
 
     /**
@@ -53,11 +53,11 @@ extends MarketplaceWebService_Model
      */
     public function setMarketplaceIdList($value) 
     {
-        $marketplaceIdList = new MarketplaceWebService_Model_IdList();
-        $marketplaceIdList->setId($value['Id']);
         if ( array_key_exists('MarketplaceIdList', $this->fields) ) {
+            $marketplaceIdList = new MarketplaceWebService_Model_IdList();
+            $marketplaceIdList->setId($value['Id']);
             $this->fields['MarketplaceIdList']['FieldValue'] = $marketplaceIdList;
         }
-        return;
+        return $this;
     }
 }

@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetReportScheduleCountRequest
  * 
  * Properties:
@@ -35,10 +28,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportScheduleCountRequest extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetReportScheduleCountRequest
+extends MarketplaceWebService_ModelRequest
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetReportScheduleCountRequest
      * 
@@ -62,144 +54,4 @@ class MarketplaceWebService_Model_GetReportScheduleCountRequest extends Marketpl
         );
         parent::__construct($data);
     }
-
-        /**
-     * Gets the value of the Marketplace property.
-     * 
-     * @return string Marketplace
-     */
-    public function getMarketplace() 
-    {
-        return $this->fields['Marketplace']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the Marketplace property.
-     * 
-     * @param string Marketplace
-     * @return this instance
-     */
-    public function setMarketplace($value) 
-    {
-        $this->fields['Marketplace']['FieldValue'] = $value;
-        return $this;
-    }
-
-    /**
-     * Sets the value of the Marketplace and returns this instance
-     * 
-     * @param string $value Marketplace
-     * @return MarketplaceWebService_Model_GetReportScheduleCountRequest instance
-     */
-    public function withMarketplace($value)
-    {
-        $this->setMarketplace($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if Marketplace is set
-     * 
-     * @return bool true if Marketplace  is set
-     */
-    public function isSetMarketplace()
-    {
-        return !is_null($this->fields['Marketplace']['FieldValue']);
-    }
-
-    /**
-     * Gets the value of the Merchant property.
-     * 
-     * @return string Merchant
-     */
-    public function getMerchant() 
-    {
-        return $this->fields['Merchant']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the Merchant property.
-     * 
-     * @param string Merchant
-     * @return this instance
-     */
-    public function setMerchant($value) 
-    {
-        $this->fields['Merchant']['FieldValue'] = $value;
-        return $this;
-    }
-
-    /**
-     * Sets the value of the Merchant and returns this instance
-     * 
-     * @param string $value Merchant
-     * @return MarketplaceWebService_Model_GetReportScheduleCountRequest instance
-     */
-    public function withMerchant($value)
-    {
-        $this->setMerchant($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if Merchant is set
-     * 
-     * @return bool true if Merchant  is set
-     */
-    public function isSetMerchant()
-    {
-        return !is_null($this->fields['Merchant']['FieldValue']);
-    }
-
-    /**
-     * Gets the value of the ReportTypeList.
-     * 
-     * @return TypeList ReportTypeList
-     */
-    public function getReportTypeList() 
-    {
-        return $this->fields['ReportTypeList']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ReportTypeList.
-     * 
-     * @param TypeList ReportTypeList
-     * @return void
-     */
-    public function setReportTypeList($value) 
-    {
-        $this->fields['ReportTypeList']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ReportTypeList  and returns this instance
-     * 
-     * @param TypeList $value ReportTypeList
-     * @return MarketplaceWebService_Model_GetReportScheduleCountRequest instance
-     */
-    public function withReportTypeList($value)
-    {
-        $this->setReportTypeList($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ReportTypeList  is set
-     * 
-     * @return bool true if ReportTypeList property is set
-     */
-    public function isSetReportTypeList()
-    {
-        return !is_null($this->fields['ReportTypeList']['FieldValue']);
-
-    }
-
-
-
-
 }

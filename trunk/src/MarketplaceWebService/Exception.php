@@ -16,14 +16,13 @@
  * 
  */
 
-
 /**
  * Marketplace Web Service  Exception provides details of errors 
  * returned by Marketplace Web Service  service
  *
  */
-class MarketplaceWebService_Exception extends Exception
-
+class MarketplaceWebService_Exception
+extends Exception
 {
     /** @var string */
     protected $message = null;
@@ -38,7 +37,6 @@ class MarketplaceWebService_Exception extends Exception
     /** @var string */
     private $xml = null;
    
-
     /**
      * Constructs MarketplaceWebService_Exception
      * @param array $errorInfo details of exception.
@@ -52,7 +50,8 @@ class MarketplaceWebService_Exception extends Exception
      * <li>XML - (string) compete xml response at the time of exception</li>
      * <li>Exception - (Exception) inner exception if any</li>
      * </ul>
-     *         
+     * 
+     * @todo for php 5.3+ trere is a more efficient interface which might be adopted.
      */
     public function __construct(array $errorInfo = array())
     {
@@ -72,7 +71,7 @@ class MarketplaceWebService_Exception extends Exception
             if(isset($errorInfo["ErrorCode"])) $this->errorCode = $errorInfo["ErrorCode"];
             if(isset($errorInfo["ErrorType"])) $this->errorType = $errorInfo["ErrorType"];
             if(isset($errorInfo["RequestId"])) $this->requestId = $errorInfo["RequestId"];
-            if(isset($errorInfo["XML"])) $this->xml= $errorInfo["XML"];
+            if(isset($errorInfo["XML"])) $this->xml = $errorInfo["XML"];
         }
     }
 
@@ -94,7 +93,6 @@ class MarketplaceWebService_Exception extends Exception
     public function getErrorType(){
         return $this->errorType;
     }
-    
     
     /**
      * Gets error message

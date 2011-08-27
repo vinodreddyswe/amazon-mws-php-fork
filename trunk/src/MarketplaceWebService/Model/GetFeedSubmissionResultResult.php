@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetFeedSubmissionResultResult
  * 
  * Properties:
@@ -32,10 +25,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetFeedSubmissionResultResult extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetFeedSubmissionResultResult
+extends MarketplaceWebService_Model
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetFeedSubmissionResultResult
      * 
@@ -54,22 +46,4 @@ class MarketplaceWebService_Model_GetFeedSubmissionResultResult extends Marketpl
         );
         parent::__construct($data);
     }
-    
-    public function getContentMd5() {
-      return $this->fields['ContentMd5']['FieldValue'];
-    }
-    
-    public function setContentMd5($value) {
-      $this->fields['ContentMd5']['FieldValue'] = $value;
-    }
-    
-    public function isSetContentMd5() {
-      return !is_null($this->fields['ContentMd5']['FieldValue']);
-    }
-
-    public function withContentMd5($value) {
-      $this->setContentMd5($value);
-      return $this;
-    }
-
 }

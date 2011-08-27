@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse
  * 
  * Properties:
@@ -34,10 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse
+extends MarketplaceWebService_ModelResponse
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse
      * 
@@ -59,7 +51,6 @@ class MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse exten
         );
         parent::__construct($data);
     }
-
        
     /**
      * Construct MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse from XML string
@@ -67,128 +58,8 @@ class MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse exten
      * @param string $xml XML string to construct from
      * @return MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse 
      */
-    public static function fromXML($xml)
+    public static function fromXML($xml, $ns = null)
     {
-        $dom = new DOMDocument();
-        $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
-    	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
-        $response = $xpath->query('//a:GetReportScheduleListByNextTokenResponse');
-        if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse(($response->item(0))); 
-        } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse from provided XML. 
-                                  Make sure that GetReportScheduleListByNextTokenResponse is a root element");
-        }
-          
+        return parent::fromXML($xml, 'GetReportScheduleListByNextTokenResponse');
     }
-    
-    /**
-     * Gets the value of the GetReportScheduleListByNextTokenResult.
-     * 
-     * @return GetReportScheduleListByNextTokenResult GetReportScheduleListByNextTokenResult
-     */
-    public function getGetReportScheduleListByNextTokenResult() 
-    {
-        return $this->fields['GetReportScheduleListByNextTokenResult']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the GetReportScheduleListByNextTokenResult.
-     * 
-     * @param GetReportScheduleListByNextTokenResult GetReportScheduleListByNextTokenResult
-     * @return void
-     */
-    public function setGetReportScheduleListByNextTokenResult($value) 
-    {
-        $this->fields['GetReportScheduleListByNextTokenResult']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the GetReportScheduleListByNextTokenResult  and returns this instance
-     * 
-     * @param GetReportScheduleListByNextTokenResult $value GetReportScheduleListByNextTokenResult
-     * @return MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse instance
-     */
-    public function withGetReportScheduleListByNextTokenResult($value)
-    {
-        $this->setGetReportScheduleListByNextTokenResult($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if GetReportScheduleListByNextTokenResult  is set
-     * 
-     * @return bool true if GetReportScheduleListByNextTokenResult property is set
-     */
-    public function isSetGetReportScheduleListByNextTokenResult()
-    {
-        return !is_null($this->fields['GetReportScheduleListByNextTokenResult']['FieldValue']);
-
-    }
-
-    /**
-     * Gets the value of the ResponseMetadata.
-     * 
-     * @return ResponseMetadata ResponseMetadata
-     */
-    public function getResponseMetadata() 
-    {
-        return $this->fields['ResponseMetadata']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata.
-     * 
-     * @param ResponseMetadata ResponseMetadata
-     * @return void
-     */
-    public function setResponseMetadata($value) 
-    {
-        $this->fields['ResponseMetadata']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata  and returns this instance
-     * 
-     * @param ResponseMetadata $value ResponseMetadata
-     * @return MarketplaceWebService_Model_GetReportScheduleListByNextTokenResponse instance
-     */
-    public function withResponseMetadata($value)
-    {
-        $this->setResponseMetadata($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ResponseMetadata  is set
-     * 
-     * @return bool true if ResponseMetadata property is set
-     */
-    public function isSetResponseMetadata()
-    {
-        return !is_null($this->fields['ResponseMetadata']['FieldValue']);
-
-    }
-
-
-
-    /**
-     * XML Representation for this object
-     * 
-     * @return string XML for this object
-     */
-    public function toXML() 
-    {
-        $xml = "";
-        $xml .= "<GetReportScheduleListByNextTokenResponse xmlns=\"http://mws.amazonaws.com/doc/2009-01-01/\">";
-        $xml .= $this->_toXMLFragment();
-        $xml .= "</GetReportScheduleListByNextTokenResponse>";
-        return $xml;
-    }
-
 }

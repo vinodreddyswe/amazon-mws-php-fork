@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetReportListResult
  * 
  * Properties:
@@ -35,9 +28,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportListResult extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetReportListResult
+extends MarketplaceWebService_Model
 {
-
 
     /**
      * Construct new MarketplaceWebService_Model_GetReportListResult
@@ -63,106 +56,6 @@ class MarketplaceWebService_Model_GetReportListResult extends MarketplaceWebServ
         parent::__construct($data);
     }
 
-        /**
-     * Gets the value of the NextToken property.
-     * 
-     * @return string NextToken
-     */
-    public function getNextToken() 
-    {
-        return $this->fields['NextToken']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the NextToken property.
-     * 
-     * @param string NextToken
-     * @return this instance
-     */
-    public function setNextToken($value) 
-    {
-        $this->fields['NextToken']['FieldValue'] = $value;
-        return $this;
-    }
-
-    /**
-     * Sets the value of the NextToken and returns this instance
-     * 
-     * @param string $value NextToken
-     * @return MarketplaceWebService_Model_GetReportListResult instance
-     */
-    public function withNextToken($value)
-    {
-        $this->setNextToken($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if NextToken is set
-     * 
-     * @return bool true if NextToken  is set
-     */
-    public function isSetNextToken()
-    {
-        return !is_null($this->fields['NextToken']['FieldValue']);
-    }
-
-    /**
-     * Gets the value of the HasNext property.
-     * 
-     * @return bool HasNext
-     */
-    public function getHasNext() 
-    {
-        return $this->fields['HasNext']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the HasNext property.
-     * 
-     * @param bool HasNext
-     * @return this instance
-     */
-    public function setHasNext($value) 
-    {
-        $this->fields['HasNext']['FieldValue'] = $value;
-        return $this;
-    }
-
-    /**
-     * Sets the value of the HasNext and returns this instance
-     * 
-     * @param bool $value HasNext
-     * @return MarketplaceWebService_Model_GetReportListResult instance
-     */
-    public function withHasNext($value)
-    {
-        $this->setHasNext($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if HasNext is set
-     * 
-     * @return bool true if HasNext  is set
-     */
-    public function isSetHasNext()
-    {
-        return !is_null($this->fields['HasNext']['FieldValue']);
-    }
-
-    /**
-     * Gets the value of the ReportInfo.
-     * 
-     * @return array of ReportInfo ReportInfo
-     */
-    public function getReportInfoList() 
-    {
-        return $this->fields['ReportInfo']['FieldValue'];
-    }
-
     /**
      * Sets the value of the ReportInfo.
      * 
@@ -177,7 +70,6 @@ class MarketplaceWebService_Model_GetReportListResult extends MarketplaceWebServ
         $this->fields['ReportInfo']['FieldValue'] = $reportInfo;
         return $this;
     }
-
 
     /**
      * Sets single or multiple values of ReportInfo list via variable number of arguments. 
@@ -194,20 +86,4 @@ class MarketplaceWebService_Model_GetReportListResult extends MarketplaceWebServ
         }
         return $this;
     }   
-
-
-
-    /**
-     * Checks if ReportInfo list is non-empty
-     * 
-     * @return bool true if ReportInfo list is non-empty
-     */
-    public function isSetReportInfo()
-    {
-        return count ($this->fields['ReportInfo']['FieldValue']) > 0;
-    }
-
-
-
-
 }
