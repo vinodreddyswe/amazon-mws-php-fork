@@ -1,3 +1,8 @@
+2011-08-26:
+    - removed redundant is* set* get* with* methods from all Model_* classes.
+    - abstract ModelResponse class
+    - code cleanup for all Model_* classes.
+
 2011-08-25:
     - removed require_once statements from Client and Model class files.
     - simplified Model class logic (removed redundant code)

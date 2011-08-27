@@ -38,8 +38,6 @@
 class MarketplaceWebService_Model_GetReportRequestListRequest
 extends MarketplaceWebService_ModelRequest
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetReportRequestListRequest
      * 

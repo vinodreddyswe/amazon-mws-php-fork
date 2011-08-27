@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetReportRequestCountResponse
  * 
  * Properties:
@@ -34,10 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportRequestCountResponse extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetReportRequestCountResponse
+extends MarketplaceWebService_ModelResponse
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetReportRequestCountResponse
      * 
@@ -59,7 +51,6 @@ class MarketplaceWebService_Model_GetReportRequestCountResponse extends Marketpl
         );
         parent::__construct($data);
     }
-
        
     /**
      * Construct MarketplaceWebService_Model_GetReportRequestCountResponse from XML string
@@ -67,128 +58,8 @@ class MarketplaceWebService_Model_GetReportRequestCountResponse extends Marketpl
      * @param string $xml XML string to construct from
      * @return MarketplaceWebService_Model_GetReportRequestCountResponse 
      */
-    public static function fromXML($xml)
+    public static function fromXML($xml, $ns = null)
     {
-        $dom = new DOMDocument();
-        $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
-    	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
-        $response = $xpath->query('//a:GetReportRequestCountResponse');
-        if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetReportRequestCountResponse(($response->item(0))); 
-        } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetReportRequestCountResponse from provided XML. 
-                                  Make sure that GetReportRequestCountResponse is a root element");
-        }
-          
+        return parent::fromXML($xml, 'GetReportRequestCountResponse');
     }
-    
-    /**
-     * Gets the value of the GetReportRequestCountResult.
-     * 
-     * @return GetReportRequestCountResult GetReportRequestCountResult
-     */
-    public function getGetReportRequestCountResult() 
-    {
-        return $this->fields['GetReportRequestCountResult']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the GetReportRequestCountResult.
-     * 
-     * @param GetReportRequestCountResult GetReportRequestCountResult
-     * @return void
-     */
-    public function setGetReportRequestCountResult($value) 
-    {
-        $this->fields['GetReportRequestCountResult']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the GetReportRequestCountResult  and returns this instance
-     * 
-     * @param GetReportRequestCountResult $value GetReportRequestCountResult
-     * @return MarketplaceWebService_Model_GetReportRequestCountResponse instance
-     */
-    public function withGetReportRequestCountResult($value)
-    {
-        $this->setGetReportRequestCountResult($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if GetReportRequestCountResult  is set
-     * 
-     * @return bool true if GetReportRequestCountResult property is set
-     */
-    public function isSetGetReportRequestCountResult()
-    {
-        return !is_null($this->fields['GetReportRequestCountResult']['FieldValue']);
-
-    }
-
-    /**
-     * Gets the value of the ResponseMetadata.
-     * 
-     * @return ResponseMetadata ResponseMetadata
-     */
-    public function getResponseMetadata() 
-    {
-        return $this->fields['ResponseMetadata']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata.
-     * 
-     * @param ResponseMetadata ResponseMetadata
-     * @return void
-     */
-    public function setResponseMetadata($value) 
-    {
-        $this->fields['ResponseMetadata']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata  and returns this instance
-     * 
-     * @param ResponseMetadata $value ResponseMetadata
-     * @return MarketplaceWebService_Model_GetReportRequestCountResponse instance
-     */
-    public function withResponseMetadata($value)
-    {
-        $this->setResponseMetadata($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ResponseMetadata  is set
-     * 
-     * @return bool true if ResponseMetadata property is set
-     */
-    public function isSetResponseMetadata()
-    {
-        return !is_null($this->fields['ResponseMetadata']['FieldValue']);
-
-    }
-
-
-
-    /**
-     * XML Representation for this object
-     * 
-     * @return string XML for this object
-     */
-    public function toXML() 
-    {
-        $xml = "";
-        $xml .= "<GetReportRequestCountResponse xmlns=\"http://mws.amazonaws.com/doc/2009-01-01/\">";
-        $xml .= $this->_toXMLFragment();
-        $xml .= "</GetReportRequestCountResponse>";
-        return $xml;
-    }
-
 }

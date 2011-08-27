@@ -36,7 +36,6 @@
 class MarketplaceWebService_Model_RequestReportRequest
 extends MarketplaceWebService_ModelRequest
 {
-
     /**
      * Construct new MarketplaceWebService_Model_RequestReportRequest
      * 

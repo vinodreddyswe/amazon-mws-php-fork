@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetReportScheduleCountResponse
  * 
  * Properties:
@@ -34,10 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetReportScheduleCountResponse extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetReportScheduleCountResponse
+extends MarketplaceWebService_ModelResponse
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetReportScheduleCountResponse
      * 
@@ -67,128 +59,8 @@ class MarketplaceWebService_Model_GetReportScheduleCountResponse extends Marketp
      * @param string $xml XML string to construct from
      * @return MarketplaceWebService_Model_GetReportScheduleCountResponse 
      */
-    public static function fromXML($xml)
+    public static function fromXML($xml, $ns = null)
     {
-        $dom = new DOMDocument();
-        $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
-    	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
-        $response = $xpath->query('//a:GetReportScheduleCountResponse');
-        if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetReportScheduleCountResponse(($response->item(0))); 
-        } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetReportScheduleCountResponse from provided XML. 
-                                  Make sure that GetReportScheduleCountResponse is a root element");
-        }
-          
+        return parent::fromXML($xml, 'GetReportScheduleCountResponse');
     }
-    
-    /**
-     * Gets the value of the GetReportScheduleCountResult.
-     * 
-     * @return GetReportScheduleCountResult GetReportScheduleCountResult
-     */
-    public function getGetReportScheduleCountResult() 
-    {
-        return $this->fields['GetReportScheduleCountResult']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the GetReportScheduleCountResult.
-     * 
-     * @param GetReportScheduleCountResult GetReportScheduleCountResult
-     * @return void
-     */
-    public function setGetReportScheduleCountResult($value) 
-    {
-        $this->fields['GetReportScheduleCountResult']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the GetReportScheduleCountResult  and returns this instance
-     * 
-     * @param GetReportScheduleCountResult $value GetReportScheduleCountResult
-     * @return MarketplaceWebService_Model_GetReportScheduleCountResponse instance
-     */
-    public function withGetReportScheduleCountResult($value)
-    {
-        $this->setGetReportScheduleCountResult($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if GetReportScheduleCountResult  is set
-     * 
-     * @return bool true if GetReportScheduleCountResult property is set
-     */
-    public function isSetGetReportScheduleCountResult()
-    {
-        return !is_null($this->fields['GetReportScheduleCountResult']['FieldValue']);
-
-    }
-
-    /**
-     * Gets the value of the ResponseMetadata.
-     * 
-     * @return ResponseMetadata ResponseMetadata
-     */
-    public function getResponseMetadata() 
-    {
-        return $this->fields['ResponseMetadata']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata.
-     * 
-     * @param ResponseMetadata ResponseMetadata
-     * @return void
-     */
-    public function setResponseMetadata($value) 
-    {
-        $this->fields['ResponseMetadata']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata  and returns this instance
-     * 
-     * @param ResponseMetadata $value ResponseMetadata
-     * @return MarketplaceWebService_Model_GetReportScheduleCountResponse instance
-     */
-    public function withResponseMetadata($value)
-    {
-        $this->setResponseMetadata($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ResponseMetadata  is set
-     * 
-     * @return bool true if ResponseMetadata property is set
-     */
-    public function isSetResponseMetadata()
-    {
-        return !is_null($this->fields['ResponseMetadata']['FieldValue']);
-
-    }
-
-
-
-    /**
-     * XML Representation for this object
-     * 
-     * @return string XML for this object
-     */
-    public function toXML() 
-    {
-        $xml = "";
-        $xml .= "<GetReportScheduleCountResponse xmlns=\"http://mws.amazonaws.com/doc/2009-01-01/\">";
-        $xml .= $this->_toXMLFragment();
-        $xml .= "</GetReportScheduleCountResponse>";
-        return $xml;
-    }
-
 }

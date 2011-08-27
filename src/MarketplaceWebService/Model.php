@@ -61,21 +61,21 @@ abstract class MarketplaceWebService_Model
      *
      * @param string $key name of the property
      * @return mixed
-     */        
+     */
     public function __get($key)
     {
         $getter = 'get'.ucfirst($key);
         if (method_exists($this, $getter)) {
             return $this->$getter();
         }
-        
+
         if (!array_key_exists($key, $this->fields)) {
             throw new InvalidArgumentException("No such property $key.");
         }
-        
+
         return $this->fields[$key]['FieldValue'];
     }
-    
+
     /**
      * Support for virtual properties setters.
      *
@@ -89,7 +89,7 @@ abstract class MarketplaceWebService_Model
      *
      * @param string $key name of the property
      * @param mixed $value value of the property
-     * 
+     *
      * @return MarketplaceWebService_Model instance of this object.
      */
     public function __set($key, $value)
@@ -98,18 +98,18 @@ abstract class MarketplaceWebService_Model
         if (method_exists($this, $setter)) {
             return $this->$setter($value);
         }
-        
+
         if (!array_key_exists($key, $this->fields)) {
             throw new InvalidArgumentException("No such property $key.");
         }
-        
+
         $this->fields[$key]['FieldValue'] = $value;
-        
+
         return $this;
     }
-    
+
     /**
-     * 
+     *
      * @param $key
      */
     public function __isset($key)
@@ -118,26 +118,28 @@ abstract class MarketplaceWebService_Model
         if (method_exists($this, $isset)) {
             return $this->$isset();
         }
-           
-        return isset($this->fields[$key]);
+
+        // added support to check arrays to be non-empty
+        return isset($this->fields[$key])
+        && $this->fields[$key] !== array();
     }
-    
+
     /**
      * Mapping get*, set*, with* and isSet* methods
      * with generic logic to corresponding magic method.
-     * 
+     *
      * @param $method
      * @param $args
      */
     public function __call($method, $args)
     {
         // TODO improve using preg_split and switch
-        // wrap with*($value) calls
+        // wrap single-argument with*($value) calls
         if (strpos($method, 'with') === 0) {
             $key = substr($method, 4);
             $value = array_shift($args);
             $this->__set($key, $value);
-            
+
             return $this;
         }
         // wrap set*($value) calls
@@ -156,10 +158,10 @@ abstract class MarketplaceWebService_Model
             $key = substr($method, 5);
             return $this->__isset($key);
         }
-        
+
         throw new BadMethodCallException("No such method $method.");
     }
-    
+
 
     /**
      * XML fragment representation of this object

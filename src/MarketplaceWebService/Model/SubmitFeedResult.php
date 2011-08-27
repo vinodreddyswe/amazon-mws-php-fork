@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_SubmitFeedResult
  * 
  * Properties:
@@ -33,10 +26,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_SubmitFeedResult extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_SubmitFeedResult
+extends MarketplaceWebService_Model
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_SubmitFeedResult
      * 
@@ -56,54 +48,4 @@ class MarketplaceWebService_Model_SubmitFeedResult extends MarketplaceWebService
         );
         parent::__construct($data);
     }
-
-        /**
-     * Gets the value of the FeedSubmissionInfo.
-     * 
-     * @return FeedSubmissionInfo FeedSubmissionInfo
-     */
-    public function getFeedSubmissionInfo() 
-    {
-        return $this->fields['FeedSubmissionInfo']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the FeedSubmissionInfo.
-     * 
-     * @param FeedSubmissionInfo FeedSubmissionInfo
-     * @return void
-     */
-    public function setFeedSubmissionInfo($value) 
-    {
-        $this->fields['FeedSubmissionInfo']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the FeedSubmissionInfo  and returns this instance
-     * 
-     * @param FeedSubmissionInfo $value FeedSubmissionInfo
-     * @return MarketplaceWebService_Model_SubmitFeedResult instance
-     */
-    public function withFeedSubmissionInfo($value)
-    {
-        $this->setFeedSubmissionInfo($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if FeedSubmissionInfo  is set
-     * 
-     * @return bool true if FeedSubmissionInfo property is set
-     */
-    public function isSetFeedSubmissionInfo()
-    {
-        return !is_null($this->fields['FeedSubmissionInfo']['FieldValue']);
-
-    }
-
-
-
-
 }

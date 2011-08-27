@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_TypeList
  * 
  * Properties:
@@ -33,10 +26,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_TypeList extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_TypeList
+extends MarketplaceWebService_Model
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_TypeList
      * 
@@ -57,16 +49,6 @@ class MarketplaceWebService_Model_TypeList extends MarketplaceWebService_Model
         parent::__construct($data);
     }
 
-        /**
-     * Gets the value of the Type .
-     * 
-     * @return array of string Type
-     */
-    public function getType() 
-    {
-        return $this->fields['Type']['FieldValue'];
-    }
-
     /**
      * Sets the value of the Type.
      * 
@@ -81,7 +63,6 @@ class MarketplaceWebService_Model_TypeList extends MarketplaceWebService_Model
         $this->fields['Type']['FieldValue'] = $type;
         return $this;
     }
-  
 
     /**
      * Sets single or multiple values of Type list via variable number of arguments. 
@@ -98,19 +79,4 @@ class MarketplaceWebService_Model_TypeList extends MarketplaceWebService_Model
         }
         return $this;
     }  
-      
-
-    /**
-     * Checks if Type list is non-empty
-     * 
-     * @return bool true if Type list is non-empty
-     */
-    public function isSetType()
-    {
-        return count ($this->fields['Type']['FieldValue']) > 0;
-    }
-
-
-
-
 }

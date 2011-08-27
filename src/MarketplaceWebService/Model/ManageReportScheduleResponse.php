@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_ManageReportScheduleResponse
  * 
  * Properties:
@@ -34,10 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_ManageReportScheduleResponse extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_ManageReportScheduleResponse
+extends MarketplaceWebService_ModelResponse
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_ManageReportScheduleResponse
      * 
@@ -59,7 +51,6 @@ class MarketplaceWebService_Model_ManageReportScheduleResponse extends Marketpla
         );
         parent::__construct($data);
     }
-
        
     /**
      * Construct MarketplaceWebService_Model_ManageReportScheduleResponse from XML string
@@ -67,128 +58,8 @@ class MarketplaceWebService_Model_ManageReportScheduleResponse extends Marketpla
      * @param string $xml XML string to construct from
      * @return MarketplaceWebService_Model_ManageReportScheduleResponse 
      */
-    public static function fromXML($xml)
+    public static function fromXML($xml, $ns = null)
     {
-        $dom = new DOMDocument();
-        $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
-    	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
-        $response = $xpath->query('//a:ManageReportScheduleResponse');
-        if ($response->length == 1) {
-            return new MarketplaceWebService_Model_ManageReportScheduleResponse(($response->item(0))); 
-        } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_ManageReportScheduleResponse from provided XML. 
-                                  Make sure that ManageReportScheduleResponse is a root element");
-        }
-          
+        return parent::fromXML($xml, 'ManageReportScheduleResponse');
     }
-    
-    /**
-     * Gets the value of the ManageReportScheduleResult.
-     * 
-     * @return ManageReportScheduleResult ManageReportScheduleResult
-     */
-    public function getManageReportScheduleResult() 
-    {
-        return $this->fields['ManageReportScheduleResult']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ManageReportScheduleResult.
-     * 
-     * @param ManageReportScheduleResult ManageReportScheduleResult
-     * @return void
-     */
-    public function setManageReportScheduleResult($value) 
-    {
-        $this->fields['ManageReportScheduleResult']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ManageReportScheduleResult  and returns this instance
-     * 
-     * @param ManageReportScheduleResult $value ManageReportScheduleResult
-     * @return MarketplaceWebService_Model_ManageReportScheduleResponse instance
-     */
-    public function withManageReportScheduleResult($value)
-    {
-        $this->setManageReportScheduleResult($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ManageReportScheduleResult  is set
-     * 
-     * @return bool true if ManageReportScheduleResult property is set
-     */
-    public function isSetManageReportScheduleResult()
-    {
-        return !is_null($this->fields['ManageReportScheduleResult']['FieldValue']);
-
-    }
-
-    /**
-     * Gets the value of the ResponseMetadata.
-     * 
-     * @return ResponseMetadata ResponseMetadata
-     */
-    public function getResponseMetadata() 
-    {
-        return $this->fields['ResponseMetadata']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata.
-     * 
-     * @param ResponseMetadata ResponseMetadata
-     * @return void
-     */
-    public function setResponseMetadata($value) 
-    {
-        $this->fields['ResponseMetadata']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata  and returns this instance
-     * 
-     * @param ResponseMetadata $value ResponseMetadata
-     * @return MarketplaceWebService_Model_ManageReportScheduleResponse instance
-     */
-    public function withResponseMetadata($value)
-    {
-        $this->setResponseMetadata($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ResponseMetadata  is set
-     * 
-     * @return bool true if ResponseMetadata property is set
-     */
-    public function isSetResponseMetadata()
-    {
-        return !is_null($this->fields['ResponseMetadata']['FieldValue']);
-
-    }
-
-
-
-    /**
-     * XML Representation for this object
-     * 
-     * @return string XML for this object
-     */
-    public function toXML() 
-    {
-        $xml = "";
-        $xml .= "<ManageReportScheduleResponse xmlns=\"http://mws.amazonaws.com/doc/2009-01-01/\">";
-        $xml .= $this->_toXMLFragment();
-        $xml .= "</ManageReportScheduleResponse>";
-        return $xml;
-    }
-
 }

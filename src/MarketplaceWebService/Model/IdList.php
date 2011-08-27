@@ -30,8 +30,6 @@
 class MarketplaceWebService_Model_IdList
 extends MarketplaceWebService_Model
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_IdList
      * 
@@ -67,14 +65,4 @@ extends MarketplaceWebService_Model
         }
         return $this;
     }  
-      
-    /**
-     * Checks if Id list is non-empty
-     * 
-     * @return bool true if Id list is non-empty
-     */
-    public function isSetId()
-    {
-        return count ($this->fields['Id']['FieldValue']) > 0;
-    }
 }

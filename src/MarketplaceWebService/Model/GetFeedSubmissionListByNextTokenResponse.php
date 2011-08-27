@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse
  * 
  * Properties:
@@ -34,10 +27,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse
+extends MarketplaceWebService_ModelResponse
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse
      * 
@@ -59,7 +51,6 @@ class MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse exten
         );
         parent::__construct($data);
     }
-
        
     /**
      * Construct MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse from XML string
@@ -67,128 +58,8 @@ class MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse exten
      * @param string $xml XML string to construct from
      * @return MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse 
      */
-    public static function fromXML($xml)
+    public static function fromXML($xml, $ns = null)
     {
-        $dom = new DOMDocument();
-        $dom->loadXML($xml);
-        $xpath = new DOMXPath($dom);
-    	$xpath->registerNamespace('a', 'http://mws.amazonaws.com/doc/2009-01-01/');
-        $response = $xpath->query('//a:GetFeedSubmissionListByNextTokenResponse');
-        if ($response->length == 1) {
-            return new MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse(($response->item(0))); 
-        } else {
-            throw new Exception ("Unable to construct MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse from provided XML. 
-                                  Make sure that GetFeedSubmissionListByNextTokenResponse is a root element");
-        }
-          
+        return parent::fromXML($xml, 'GetFeedSubmissionListByNextTokenResponse');
     }
-    
-    /**
-     * Gets the value of the GetFeedSubmissionListByNextTokenResult.
-     * 
-     * @return GetFeedSubmissionListByNextTokenResult GetFeedSubmissionListByNextTokenResult
-     */
-    public function getGetFeedSubmissionListByNextTokenResult() 
-    {
-        return $this->fields['GetFeedSubmissionListByNextTokenResult']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the GetFeedSubmissionListByNextTokenResult.
-     * 
-     * @param GetFeedSubmissionListByNextTokenResult GetFeedSubmissionListByNextTokenResult
-     * @return void
-     */
-    public function setGetFeedSubmissionListByNextTokenResult($value) 
-    {
-        $this->fields['GetFeedSubmissionListByNextTokenResult']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the GetFeedSubmissionListByNextTokenResult  and returns this instance
-     * 
-     * @param GetFeedSubmissionListByNextTokenResult $value GetFeedSubmissionListByNextTokenResult
-     * @return MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse instance
-     */
-    public function withGetFeedSubmissionListByNextTokenResult($value)
-    {
-        $this->setGetFeedSubmissionListByNextTokenResult($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if GetFeedSubmissionListByNextTokenResult  is set
-     * 
-     * @return bool true if GetFeedSubmissionListByNextTokenResult property is set
-     */
-    public function isSetGetFeedSubmissionListByNextTokenResult()
-    {
-        return !is_null($this->fields['GetFeedSubmissionListByNextTokenResult']['FieldValue']);
-
-    }
-
-    /**
-     * Gets the value of the ResponseMetadata.
-     * 
-     * @return ResponseMetadata ResponseMetadata
-     */
-    public function getResponseMetadata() 
-    {
-        return $this->fields['ResponseMetadata']['FieldValue'];
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata.
-     * 
-     * @param ResponseMetadata ResponseMetadata
-     * @return void
-     */
-    public function setResponseMetadata($value) 
-    {
-        $this->fields['ResponseMetadata']['FieldValue'] = $value;
-        return;
-    }
-
-    /**
-     * Sets the value of the ResponseMetadata  and returns this instance
-     * 
-     * @param ResponseMetadata $value ResponseMetadata
-     * @return MarketplaceWebService_Model_GetFeedSubmissionListByNextTokenResponse instance
-     */
-    public function withResponseMetadata($value)
-    {
-        $this->setResponseMetadata($value);
-        return $this;
-    }
-
-
-    /**
-     * Checks if ResponseMetadata  is set
-     * 
-     * @return bool true if ResponseMetadata property is set
-     */
-    public function isSetResponseMetadata()
-    {
-        return !is_null($this->fields['ResponseMetadata']['FieldValue']);
-
-    }
-
-
-
-    /**
-     * XML Representation for this object
-     * 
-     * @return string XML for this object
-     */
-    public function toXML() 
-    {
-        $xml = "";
-        $xml .= "<GetFeedSubmissionListByNextTokenResponse xmlns=\"http://mws.amazonaws.com/doc/2009-01-01/\">";
-        $xml .= $this->_toXMLFragment();
-        $xml .= "</GetFeedSubmissionListByNextTokenResponse>";
-        return $xml;
-    }
-
 }

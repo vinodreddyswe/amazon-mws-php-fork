@@ -17,15 +17,11 @@
  */
 
 /**
- *  @see MarketplaceWebService_Interface
- */
-require_once ('MarketplaceWebService/Interface.php'); 
-
-/**
  * The Amazon Marketplace Web Service contain APIs for inventory and order management.
- * 
+ * @todo refactor, use base class common to Mock and Client.
  */
-class  MarketplaceWebService_Mock implements MarketplaceWebService_Interface
+class  MarketplaceWebService_Mock
+implements MarketplaceWebService_Interface
 {
     // Public API ------------------------------------------------------------//
 

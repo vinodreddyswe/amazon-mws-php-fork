@@ -5,3 +5,6 @@ Unsorted list of pending tasks (which are mostly not reported issues yet).
 - add unit tests
 - test all sample codes
 - update documentation to php doc standards
+
+- *Response seems to be fairly redundant.
+    All that differs is the action name(space) - which is a scalar.

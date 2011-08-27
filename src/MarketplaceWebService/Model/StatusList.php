@@ -17,13 +17,6 @@
  */
 
 /**
- *  @see MarketplaceWebService_Model
- */
-require_once ('MarketplaceWebService/Model.php');  
-
-    
-
-/**
  * MarketplaceWebService_Model_StatusList
  * 
  * Properties:
@@ -33,10 +26,9 @@ require_once ('MarketplaceWebService/Model.php');
  *
  * </ul>
  */ 
-class MarketplaceWebService_Model_StatusList extends MarketplaceWebService_Model
+class MarketplaceWebService_Model_StatusList
+extends MarketplaceWebService_Model
 {
-
-
     /**
      * Construct new MarketplaceWebService_Model_StatusList
      * 
@@ -56,17 +48,6 @@ class MarketplaceWebService_Model_StatusList extends MarketplaceWebService_Model
         );
         parent::__construct($data);
     }
-
-        /**
-     * Gets the value of the Status .
-     * 
-     * @return array of string Status
-     */
-    public function getStatus() 
-    {
-        return $this->fields['Status']['FieldValue'];
-    }
-
     /**
      * Sets the value of the Status.
      * 
@@ -81,7 +62,6 @@ class MarketplaceWebService_Model_StatusList extends MarketplaceWebService_Model
         $this->fields['Status']['FieldValue'] = $status;
         return $this;
     }
-  
 
     /**
      * Sets single or multiple values of Status list via variable number of arguments. 
@@ -98,19 +78,4 @@ class MarketplaceWebService_Model_StatusList extends MarketplaceWebService_Model
         }
         return $this;
     }  
-      
-
-    /**
-     * Checks if Status list is non-empty
-     * 
-     * @return bool true if Status list is non-empty
-     */
-    public function isSetStatus()
-    {
-        return count ($this->fields['Status']['FieldValue']) > 0;
-    }
-
-
-
-
 }
